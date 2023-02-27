@@ -1,0 +1,107 @@
+"++++++++++++++++++++++++++++++++++++++++"
+"+           vimrc von awvwgk           +"
+"++++++++++++++++++++++++++++++++++++++++"
+set history=700
+"----------------------------------------"
+filetype plugin on
+filetype indent on
+"----------------------------------------" 
+set autoread
+"----------------------------------------"
+"nmap <leader>w :w!<cr>
+"----------------------------------------"
+set so=7
+"----------------------------------------"
+set wildmenu
+"----------------------------------------"
+set wildignore=*.o,*~,*.pyc
+"----------------------------------------"
+set ruler
+"----------------------------------------"
+set cmdheight=2
+"----------------------------------------"
+set hid
+"----------------------------------------"
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+"----------------------------------------"
+set ignorecase
+set smartcase
+"----------------------------------------"
+set hlsearch
+set incsearch
+"----------------------------------------"
+set lazyredraw
+"----------------------------------------"
+set magic
+"----------------------------------------"
+set showmatch
+set mat=2
+"----------------------------------------"
+set noerrorbells
+set novisualbell
+set tm=500
+"----------------------------------------"
+syntax enable
+"----------------------------------------"
+if has("gui_running")
+	set guioptions-=T
+	set guioptions+=e
+	set guitablabel=%M\ %t
+endif
+"----------------------------------------"
+set encoding=utf8
+"----------------------------------------"
+set ffs=unix,dos,mac
+"----------------------------------------"
+set smarttab
+set shiftwidth=3
+set tabstop=3
+set expandtab
+"----------------------------------------"
+set lbr
+"----------------------------------------"
+set autoindent
+set smartindent
+set wrap
+"----------------------------------------"
+map <space> /
+map <c-space> ?
+"----------------------------------------"
+command W w
+command Q q
+command Wq wq
+command WQ wq
+"----------------------------------------"
+autocmd BufReadPost *
+	\ if line("'\'") > 0 && line("'\'") <= line("$") |
+	\	exe "normal! g`\"" |
+	\ endif
+set viminfo^=%
+"----------------------------------------"
+set laststatus=2
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"----------------------------------------"
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE '
+    en
+    return ''
+endfunction
+"----------------------------------------"
+set mouse=a
+"----------------------------------------"
+set confirm
+"----------------------------------------"
+set cursorline
+"----------------------------------------"
+let fortran_do_enddo=1
+let b:fortran_fixed_source=0
+"----------------------------------------"
+set pastetoggle=<F2>
+"----------------------------------------"
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+
+autocmd BufNewFile,BufRead *.fypp set syntax=fortran
